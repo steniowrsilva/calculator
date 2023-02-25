@@ -1,0 +1,7 @@
+#calculator {
+    width: fit-content;
+}
+
+#display {
+    text-align: right;
+}
