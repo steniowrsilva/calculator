@@ -58,28 +58,28 @@ zero.addEventListener('click', () => {
 one.addEventListener('click', () => {
     display.textContent==='0' ? display.textContent = '1': display.textContent += '1';
 });
-two.addEventListener('click', e => {
+two.addEventListener('click', () => {
     display.textContent==='0' ? display.textContent = '2': display.textContent += '2';
 });
-three.addEventListener('click', e => {
+three.addEventListener('click', () => {
     display.textContent==='0' ? display.textContent = '3': display.textContent += '3';
 });
-four.addEventListener('click', e => {
+four.addEventListener('click', () => {
     display.textContent==='0' ? display.textContent = '4': display.textContent += '4';
 });
-five.addEventListener('click', e => {
+five.addEventListener('click', () => {
     display.textContent==='0' ? display.textContent = '5': display.textContent += '5';
 });
-six.addEventListener('click', e => {
+six.addEventListener('click', () => {
     display.textContent==='0' ? display.textContent = '6': display.textContent += '6';
 });
-seven.addEventListener('click', e => {
+seven.addEventListener('click', () => {
     display.textContent==='0' ? display.textContent = '7': display.textContent += '7';
 });
-eight.addEventListener('click', e => {
+eight.addEventListener('click', () => {
     display.textContent==='0' ? display.textContent = '8': display.textContent += '8';
 });
-nine.addEventListener('click', e => {
+nine.addEventListener('click', () => {
     display.textContent==='0' ? display.textContent = '9': display.textContent += '9';
 });
 
@@ -99,6 +99,7 @@ const equalButton = document.querySelector('.equal');
 // OPERATORS EVENTS
 let result=[];
 let operator;
+let verifyEqual=false;
 addButton.addEventListener('click', () => {           // 6+3-2=1 // 4-3+1=8 // (5+2)*3=30
     result.push(parseFloat(display.textContent));
     result=[operate(operator,result)];
@@ -132,6 +133,7 @@ equalButton.addEventListener('click', () => {
     result=[operate(operator,result)];
     display.textContent=result[0];
     result=[];
+    verifyEqual=true; // para colocar na condição dos números 
 });
 
 
