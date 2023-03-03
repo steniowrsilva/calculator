@@ -14,21 +14,22 @@ const divide = function(ratio, number){
     return ratio/number;
 }
 
-// return numbers.reduce((sum, number) => {return add(sum, number)})
-
 const operate = function (operator, result) {
     switch (operator) {
         case '+':
             return result.reduce((sum, number) => add(sum, number), 0);
 
         case '-':
-            return result.reduce((difference, number) => subtract(difference, number), result[0]);
+            return result.reduce((difference, number) => subtract(difference, number));
 
         case 'x':
             return result.reduce((product, number) => multiply(product, number), 1);
 
         case '÷':
-            return result.reduce((ratio, number) => divide(ratio, number), result[0]);
+            return result.reduce((ratio, number) => divide(ratio, number));
+            
+        default:
+            return parseFloat(display.textContent);
     }
 }
 
@@ -85,7 +86,7 @@ nine.addEventListener('click', e => {
 // CLEAR EVENT
 clear.addEventListener('click', e => {
     display.textContent = '0';
-    result=[display.textContent];
+    result=[];
 });
 
 // OPERATORS
@@ -98,35 +99,39 @@ const equalButton = document.querySelector('.equal');
 // OPERATORS EVENTS
 let result=[];
 let operator;
-addButton.addEventListener('click', () => {
+addButton.addEventListener('click', () => {           // 6+3-2=1 // 4-3+1=8 // (5+2)*3=30
     result.push(parseFloat(display.textContent));
-    operator = '+';
     result=[operate(operator,result)];
+    operator = '+';
     display.textContent = '0';    
 });
 
 subtractButton.addEventListener('click', ()=> {
     result.push(parseFloat(display.textContent));
-    operator = '-';
     result=[operate(operator,result)];
+    operator = '-';
     display.textContent = '0';
 })
 
 multiplyButton.addEventListener('click', ()=> {
     result.push(parseFloat(display.textContent));
-    operator = 'x';
     result=[operate(operator,result)];
+    operator = 'x';
     display.textContent = '0';
 })
 
 divideButton.addEventListener('click', ()=> {
     result.push(parseFloat(display.textContent));
-    operator = '÷';
     result=[operate(operator,result)];
+    operator = '÷';
     display.textContent = '0';
 })
 
 equalButton.addEventListener('click', () => {
+    result.push(parseFloat(display.textContent));
+    result=[operate(operator,result)];
     display.textContent=result[0];
     result=[];
 });
+
+
