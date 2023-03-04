@@ -1,11 +1,11 @@
 #calculator {
-    width: 300px;
+    width: 360px;
     display: flex;
     flex-direction: column;
     margin: auto;
     border-radius: 10px;
     border: 6px solid black;
-}
+}   
 
 #display {
     text-align: right;

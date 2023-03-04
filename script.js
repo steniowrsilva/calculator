@@ -64,42 +64,53 @@ zero.addEventListener('click', () => {
     } else {
         verifyOperation = false;
     }
+    limitNumberOfDigits();
 });
 one.addEventListener('click', () => {
     display.textContent==='0' || verifyOperation===true ? display.textContent = '1': display.textContent += '1';
     verifyOperation=false;
+    limitNumberOfDigits();
 });
 two.addEventListener('click', () => {
     display.textContent==='0' || verifyOperation===true ? display.textContent = '2': display.textContent += '2';
     verifyOperation=false;
+    limitNumberOfDigits();
 });
 three.addEventListener('click', () => {
     display.textContent==='0' || verifyOperation===true ? display.textContent = '3': display.textContent += '3';
     verifyOperation=false;
+    limitNumberOfDigits();
 });
 four.addEventListener('click', () => {
     display.textContent==='0' || verifyOperation===true ? display.textContent = '4': display.textContent += '4';
     verifyOperation=false;
+    limitNumberOfDigits();
 });
 five.addEventListener('click', () => {
     display.textContent==='0' || verifyOperation===true ? display.textContent = '5': display.textContent += '5';
     verifyOperation=false;
+    limitNumberOfDigits();
+
 });
 six.addEventListener('click', () => {
     display.textContent==='0' || verifyOperation===true ? display.textContent = '6': display.textContent += '6';
     verifyOperation=false;
+    limitNumberOfDigits();
 });
 seven.addEventListener('click', () => {
     display.textContent==='0' || verifyOperation===true ? display.textContent = '7': display.textContent += '7';
     verifyOperation=false;
+    limitNumberOfDigits();
 });
 eight.addEventListener('click', () => {
     display.textContent==='0' || verifyOperation===true ? display.textContent = '8': display.textContent += '8';
     verifyOperation=false;
+    limitNumberOfDigits();
 });
 nine.addEventListener('click', () => {
     display.textContent==='0' || verifyOperation===true ? display.textContent = '9': display.textContent += '9';
     verifyOperation=false;
+    limitNumberOfDigits();
 });
 
 // CLEAR EVENT
@@ -174,6 +185,8 @@ signal.addEventListener('click', ()=> {
     
 });
 
+// BUTTONS TO CHANGE NUMBERS
+
 dot.addEventListener('click', ()=> {
     if (!display.textContent.includes('.')) {
         display.textContent += '.';
@@ -189,5 +202,12 @@ deleteDigit.addEventListener('click', ()=> {
         display.textContent = '0';
     }
 });
+
+//limit number of caracters
+let limitNumberOfDigits = () => {
+    if (display.textContent.length>18){
+        display.textContent = display.textContent.substring(0,18);
+    }
+}
 
 
