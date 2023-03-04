@@ -48,43 +48,62 @@ const nine = document.querySelector('.nine');
 // DISPLAY
 const display = document.querySelector('#display');
 
-// OPERATORS
+// DISPLAY OPERATORS
 const clear = document.querySelector('#clear');
+const signal = document.querySelector('#signal');
+const dot = document.querySelector('#dot');
+const deleteDigit = document.querySelector('#delete');
 
 // NUMBERS EVENTS
 zero.addEventListener('click', () => {
-    display.textContent==='0' ? display.textContent = '0': display.textContent += '0';
+    display.textContent==='0' || verifyOperation===true ? display.textContent = '0': display.textContent += '0';
+    display.textContent = verifyDivisionOperation===true ? 'Cannot divide by zero!' : display.textContent;
+    if (display.textContent==='Cannot divide by zero!' ){
+        verifyOperation = true;
+        result=[];
+    } else {
+        verifyOperation = false;
+    }
 });
 one.addEventListener('click', () => {
-    display.textContent==='0' ? display.textContent = '1': display.textContent += '1';
+    display.textContent==='0' || verifyOperation===true ? display.textContent = '1': display.textContent += '1';
+    verifyOperation=false;
 });
 two.addEventListener('click', () => {
-    display.textContent==='0' ? display.textContent = '2': display.textContent += '2';
+    display.textContent==='0' || verifyOperation===true ? display.textContent = '2': display.textContent += '2';
+    verifyOperation=false;
 });
 three.addEventListener('click', () => {
-    display.textContent==='0' ? display.textContent = '3': display.textContent += '3';
+    display.textContent==='0' || verifyOperation===true ? display.textContent = '3': display.textContent += '3';
+    verifyOperation=false;
 });
 four.addEventListener('click', () => {
-    display.textContent==='0' ? display.textContent = '4': display.textContent += '4';
+    display.textContent==='0' || verifyOperation===true ? display.textContent = '4': display.textContent += '4';
+    verifyOperation=false;
 });
 five.addEventListener('click', () => {
-    display.textContent==='0' ? display.textContent = '5': display.textContent += '5';
+    display.textContent==='0' || verifyOperation===true ? display.textContent = '5': display.textContent += '5';
+    verifyOperation=false;
 });
 six.addEventListener('click', () => {
-    display.textContent==='0' ? display.textContent = '6': display.textContent += '6';
+    display.textContent==='0' || verifyOperation===true ? display.textContent = '6': display.textContent += '6';
+    verifyOperation=false;
 });
 seven.addEventListener('click', () => {
-    display.textContent==='0' ? display.textContent = '7': display.textContent += '7';
+    display.textContent==='0' || verifyOperation===true ? display.textContent = '7': display.textContent += '7';
+    verifyOperation=false;
 });
 eight.addEventListener('click', () => {
-    display.textContent==='0' ? display.textContent = '8': display.textContent += '8';
+    display.textContent==='0' || verifyOperation===true ? display.textContent = '8': display.textContent += '8';
+    verifyOperation=false;
 });
 nine.addEventListener('click', () => {
-    display.textContent==='0' ? display.textContent = '9': display.textContent += '9';
+    display.textContent==='0' || verifyOperation===true ? display.textContent = '9': display.textContent += '9';
+    verifyOperation=false;
 });
 
 // CLEAR EVENT
-clear.addEventListener('click', e => {
+clear.addEventListener('click', () => {
     display.textContent = '0';
     result=[];
 });
@@ -99,33 +118,43 @@ const equalButton = document.querySelector('.equal');
 // OPERATORS EVENTS
 let result=[];
 let operator;
-let verifyEqual=false;
-addButton.addEventListener('click', () => {           // 6+3-2=1 // 4-3+1=8 // (5+2)*3=30
+let verifyOperation=false;
+let verifyDivisionOperation=false;
+addButton.addEventListener('click', () => {  
+    // display.textContent = result.length===0 ? display.textContent : result[0];
     result.push(parseFloat(display.textContent));
     result=[operate(operator,result)];
     operator = '+';
-    display.textContent = '0';    
+    display.textContent = result[0];
+    verifyOperation=true;   
 });
 
 subtractButton.addEventListener('click', ()=> {
+    // display.textContent = result.length===0 ? display.textContent : result[0];
     result.push(parseFloat(display.textContent));
     result=[operate(operator,result)];
     operator = '-';
-    display.textContent = '0';
+    display.textContent = result[0];
+    verifyOperation=true; 
 })
 
 multiplyButton.addEventListener('click', ()=> {
+    // display.textContent = result.length===0 ? display.textContent : result[0];
     result.push(parseFloat(display.textContent));
     result=[operate(operator,result)];
     operator = 'x';
-    display.textContent = '0';
+    display.textContent = result[0];
+    verifyOperation=true; 
 })
 
 divideButton.addEventListener('click', ()=> {
+    // display.textContent = result.length===0 ? display.textContent : result[0];
     result.push(parseFloat(display.textContent));
     result=[operate(operator,result)];
     operator = '÷';
-    display.textContent = '0';
+    display.textContent = result[0];
+    verifyOperation=true;
+    verifyDivisionOperation=true;
 })
 
 equalButton.addEventListener('click', () => {
@@ -133,7 +162,32 @@ equalButton.addEventListener('click', () => {
     result=[operate(operator,result)];
     display.textContent=result[0];
     result=[];
-    verifyEqual=true; // para colocar na condição dos números 
+    verifyOperation=true;
+});
+
+signal.addEventListener('click', ()=> {
+    if (parseFloat(display.textContent)>0) {
+        display.textContent = '-' + display.textContent;
+    } else {
+        display.textContent = (parseFloat(display.textContent)*(-1)).toString();
+    }
+    
+});
+
+dot.addEventListener('click', ()=> {
+    if (!display.textContent.includes('.')) {
+        display.textContent += '.';
+    }
+});
+
+deleteDigit.addEventListener('click', ()=> {
+    if (display.textContent.length > 1){
+        let arr = display.textContent.split('');
+        arr.pop();
+        display.textContent = ''.concat(...arr);
+    } else if (display.textContent.length===1){
+        display.textContent = '0';
+    }
 });
 
 

@@ -1,7 +1,48 @@
 #calculator {
-    width: fit-content;
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
 }
 
 #display {
     text-align: right;
+    font-size:xx-large;
+    background-color: rgb(202, 198, 198);
+}
+
+#change {
+    display: flex;
+}
+
+#change button {
+    flex: 1;
+}
+
+#numbers-operators {
+    display: flex;
+}
+
+#numbers {
+    width: 75%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#numbers .equal {
+    width: calc(2*(100%/3));
+}
+
+.number {
+    width: calc(100%/3);
+}
+
+#operators {    
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+}
+
+button {
+    height: 40px;
+    font-size: large;
 }
