@@ -185,7 +185,7 @@ deleteDigit.addEventListener('click', ()=> {
         let arr = display.textContent.split('');
         arr.pop();
         display.textContent = ''.concat(...arr);
-    } else if (display.textContent.length===1){
+    } else if (display.textContent.length===1 || display.textContent==='Cannot divide by zero!'){
         display.textContent = '0';
     }
 });
