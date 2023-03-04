@@ -57,8 +57,8 @@ const deleteDigit = document.querySelector('#delete');
 // NUMBERS EVENTS
 zero.addEventListener('click', () => {
     display.textContent==='0' || verifyOperation===true ? display.textContent = '0': display.textContent += '0';
-    display.textContent = verifyDivisionOperation===true ? 'Cannot divide by zero!' : display.textContent;
-    if (display.textContent==='Cannot divide by zero!' ){
+    display.textContent = verifyDivisionOperation===true ? 'Cannot divide by 0!' : display.textContent;
+    if (display.textContent==='Cannot divide by 0!' ){
         verifyOperation = true;
         result=[];
     } else {
@@ -198,7 +198,7 @@ deleteDigit.addEventListener('click', ()=> {
         let arr = display.textContent.split('');
         arr.pop();
         display.textContent = ''.concat(...arr);
-    } else if (display.textContent.length===1 || display.textContent==='Cannot divide by zero!'){
+    } else if (display.textContent.length===1 || display.textContent==='Cannot divide by 0!'){
         display.textContent = '0';
     }
 });
