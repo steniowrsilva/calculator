@@ -1,5 +1,5 @@
 #calculator {
-    width: 20vw;
+    width: 256px;
     display: flex;
     flex-direction: column;
 }
@@ -15,7 +15,7 @@
 }
 
 #change button {
-    flex: 1;
+    flex-grow: 1;
 }
 
 #numbers-operators {
