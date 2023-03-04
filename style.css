@@ -1,5 +1,5 @@
 #calculator {
-    width: 256px;
+    width: 300px;
     display: flex;
     flex-direction: column;
     margin: auto;
@@ -11,6 +11,7 @@
     text-align: right;
     font-size:xx-large;
     background-color: rgb(202, 198, 198);
+    height: 60px;
 }
 
 #change {
@@ -60,6 +61,6 @@
 }
 
 button {
-    height: 40px;
+    height: 60px;
     font-size: large;
 }
